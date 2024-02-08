@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "402762767084",
+    "project_id": "bookverse-c4033",
+    "storage_bucket": "bookverse-c4033.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402762767084:android:ed8b59f8cf87e704de23c9",
+        "android_client_info": {
+          "package_name": "com.example.book_verse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqfQkFX0yEXsAzj7wKFGJ6qpt4dIys3MI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
