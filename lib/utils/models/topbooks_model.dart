@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 
-class NewBooksModel {
+class TopBooksModel {
   String imageUrl, author, bookName, description;
   int id, categoryId;
 
-  NewBooksModel({
+  TopBooksModel({
     required this.id,
     required this.categoryId,
     required this.imageUrl,
@@ -28,12 +28,12 @@ class NewBooksModel {
     };
   }
 
-  factory NewBooksModel.fromSnapshot(DocumentSnapshot snapshot) {
+  factory TopBooksModel.fromSnapshot(DocumentSnapshot snapshot) {
 
     final data = snapshot.data() as Map<String, dynamic>;
-   // print('Snapshot data: $data');
+    // print('Snapshot data: $data');
 
-    return NewBooksModel(
+    return TopBooksModel(
       imageUrl: data['ImageUrl'] ?? '',
       author: data['Author'] ?? '',
       description: data['Description'] ?? '',

@@ -17,11 +17,7 @@ class NewBookController extends GetxController {
     super.onInit();
   } //static BannerController get instance => Get.find();
 
-  // void updatePageIndicator(index) {
-  //   carouselCurrentIndex.value = index;
-  // }
-
-  ///Fetch banners
+  ///Fetch books
   Future<void> fetchAllBooks() async {
     try {
       isLoading.value = true;
@@ -29,6 +25,11 @@ class NewBookController extends GetxController {
     //  final booksRepo = Get.put(NewBookRepo());
       final data = await booksRepo.fetchNewBooks();
       fetchBooks.assignAll(data);
+
+      //data for top books
+      // final topBooks = await booksRepo.fetchTopBooks();
+      // fetchBooks.assignAll(topBooks);
+
     } catch (e) {
       CustomAlert(
         title: "Error",

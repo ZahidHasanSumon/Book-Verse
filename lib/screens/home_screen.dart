@@ -1,8 +1,12 @@
+import 'package:book_verse/controller/top_books_controller.dart';
 import 'package:book_verse/helpers/helper_func.dart';
+import 'package:book_verse/shimmer/vertical_shimmer.dart';
+import 'package:book_verse/shimmer/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../controller/banner_controller.dart';
 import '../controller/new_book_controller.dart';
-import '../shimmer/shimmer.dart';
+import '../shimmer/product_horizontal_shimmer.dart';
 import '../utils/custom_themes/sizes.dart';
 import '../utils/values/text.dart';
 import '../widget/grid_layout.dart';
@@ -20,6 +24,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final drakMode = SHelperFunctions.isDarkMode(context);
     final controller = Get.put(NewBookController());
+    final topBookController = Get.put(TopBookController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -62,16 +67,15 @@ class HomeScreen extends StatelessWidget {
                   ///Heading
                   SSectionHeading(
                     title: 'New Books',
-                    onPressed: () => Get.to(() => const AllProducts()),
+                   onPressed: () => Get.to(() => const AllProducts()),
                   ),
 
                   const SizedBox(height: 10),
                   SizedBox(
                     height: 150,
                     child: Obx(() {
-                      if(controller.isLoading.value){
-                        return const ShimmerEffect(width: double.infinity, height: 200,);
-                        //return const HorizontalShimmer();
+                      if (controller.isLoading.value) {
+                        return const SProductCardHorizontalShimmer();
                       }
                       if (controller.fetchBooks.isEmpty) {
                         return Center(
@@ -81,16 +85,18 @@ class HomeScreen extends StatelessWidget {
                                     .bodyMedium!
                                     .apply(color: Colors.white)));
                       }
-                      return  ListView.separated(
+                      return ListView.separated(
                         shrinkWrap: true,
-                        itemCount: controller.fetchBooks.length, // Replace 'yourController' with your actual controller
+                        itemCount: controller.fetchBooks
+                            .length,
                         scrollDirection: Axis.horizontal,
                         separatorBuilder: (context, index) =>
-                        const SizedBox(width: TSizes.spaceBtwItems),
-                        itemBuilder: (context, index) => SProductCardHorizontal(newBooksModel: controller.fetchBooks[index],), // Remove 'const' here
+                            const SizedBox(width: TSizes.spaceBtwItems),
+                        itemBuilder: (context, index) => SProductCardHorizontal(
+                          newBooksModel: controller.fetchBooks[index],
+                        ),
                       );
-                    }
-                    ),
+                    },),
                   )
                 ],
               ),
@@ -102,15 +108,36 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 children: [
                   ///Heading
-                  SSectionHeading(
+                  const SSectionHeading(
                     title: 'Top Books',
-                    onPressed: () => Get.to(() => const AllProducts()),
+                   // onPressed: () => Get.to(() => const AllProducts()),
                   ),
                   const SizedBox(height: TSizes.spaceBtwItems),
-                  SGridLayout(
-                    itemCount: 10,
-                    itemBuilder: (_, index) => const SProductCardVertical(),
-                  ),
+                  Obx((){
+                    if (topBookController.isLoading.value) {
+                      return SGridLayout(
+                        itemCount: 10, // Provide a dummy itemCount
+                        itemBuilder: (_, index) => Container(), // Provide a dummy itemBuilder
+                        shimmer: true, // Set shimmer flag to true
+                      );
+                    } else if (topBookController.fetchBooks.isEmpty) {
+                      return Center(
+                        child: Text(
+                          'No data found!',
+                          style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white),
+                        ),
+                      );
+                    }else{
+                      return SGridLayout(
+                        itemCount: topBookController.fetchBooks.length,
+                        itemBuilder: (_, index) => SProductCardVertical(
+                          topBooksModel: topBookController.fetchBooks[index],
+                        ),
+                      );
+                    }
+
+                  },)
+
                   //SProductCardVertical(),
                 ],
               ),

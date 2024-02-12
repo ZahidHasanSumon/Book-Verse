@@ -26,7 +26,7 @@ class SPromoSlider extends StatelessWidget {
           ),
           items: List.generate(
             5, // Assuming 5 placeholders while loading
-                (index) => const ShimmerEffect(width: double.infinity, height: 190),
+                (index) => const ShimmerEffect(width: double.infinity, height: 400),
           ),
         );
       }

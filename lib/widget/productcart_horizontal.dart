@@ -9,9 +9,9 @@ import '../utils/custom_themes/sizes.dart';
 import '../utils/values/shadow.dart';
 
 class SProductCardHorizontal extends StatelessWidget {
-  const SProductCardHorizontal({super.key, required this.newBooksModel});
+  const SProductCardHorizontal({super.key, this.newBooksModel});
 
-  final NewBooksModel newBooksModel;
+  final NewBooksModel? newBooksModel;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class SProductCardHorizontal extends StatelessWidget {
                   child: SRoundedImage(
                       height: 150,
                       fit: BoxFit.cover,
-                      imageUrl: newBooksModel.imageUrl,
+                      imageUrl: newBooksModel!.imageUrl,
                       isNetworkImage: true,
                       applyImageRadius: true),
                 ),
@@ -64,19 +64,19 @@ class SProductCardHorizontal extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SProductTitleText(
-                        title: newBooksModel.bookName,
+                        title: newBooksModel!.bookName,
                         smallSize: true,
                         bold: true,
 
                       ),
                       SProductTitleText(
-                        title: newBooksModel.author,
+                        title: newBooksModel!.author,
                         smallSize: true,
                         bold: true,
                       ),
                       const SizedBox(height: TSizes.spaceBtwItems / 2),
                       SProductTitleText(
-                        title: newBooksModel.description,
+                        title: newBooksModel!.description,
                         smallSize: true,
                         maxLine: 5,
                       ),

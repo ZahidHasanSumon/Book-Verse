@@ -1,5 +1,3 @@
-import 'package:book_verse/utils/models/newbooks_model.dart';
-import 'package:book_verse/utils/models/topbooks_model.dart';
 import 'package:flutter/material.dart';
 import '../helpers/helper_func.dart';
 import '../helpers/scolors.dart';
@@ -7,11 +5,13 @@ import '../utils/custom_themes/product_title_text.dart';
 import '../utils/custom_themes/rounded_container.dart';
 import '../utils/custom_themes/rounded_images.dart';
 import '../utils/custom_themes/sizes.dart';
+import '../utils/models/newbooks_model.dart';
+import '../utils/values/images_path.dart';
 import '../utils/values/shadow.dart';
 
-class SProductCardVertical extends StatelessWidget {
-  const SProductCardVertical({super.key, this.topBooksModel});
-  final TopBooksModel? topBooksModel;
+class NewBooksCardVertical extends StatelessWidget {
+  const NewBooksCardVertical({super.key, this.newBooksModel});
+  final NewBooksModel? newBooksModel;
 
 
   @override
@@ -23,9 +23,9 @@ class SProductCardVertical extends StatelessWidget {
         width: 180,
         padding: const EdgeInsets.all(1),
         decoration: BoxDecoration(
-          boxShadow: [SShadowStyle.verticalProductShadow],
-          borderRadius: BorderRadius.circular(TSizes.productImageRadius),
-          color: dark ? SColors.darkerGrey : SColors.white,
+            boxShadow: [SShadowStyle.verticalProductShadow],
+            borderRadius: BorderRadius.circular(TSizes.productImageRadius),
+            color: dark ? SColors.darkerGrey : SColors.white,
             border: Border.all(
               color: SColors.darkGrey,
               width: 1,
@@ -37,10 +37,10 @@ class SProductCardVertical extends StatelessWidget {
             SRoundedContainer(
               height: 170,
               width: 180,
-            //  padding: const EdgeInsets.all(TSizes.sm),
+              //  padding: const EdgeInsets.all(TSizes.sm),
               bgColor: dark ? SColors.dark : SColors.light,
               child: SRoundedImage(
-                imageUrl: topBooksModel!.imageUrl,
+                imageUrl: newBooksModel!.imageUrl,
                 applyImageRadius: true,
                 fit: BoxFit.cover,
                 isNetworkImage: true,
@@ -56,17 +56,17 @@ class SProductCardVertical extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SProductTitleText(
-                    title: topBooksModel!.bookName,
+                    title: newBooksModel!.bookName,
                     smallSize: true,
                   ),
 
                   SProductTitleText(
-                    title: topBooksModel!.author,
+                    title: newBooksModel!.author,
                     smallSize: true,
                   ),
                   const SizedBox(height: TSizes.spaceBtwItems / 2),
                   SProductTitleText(
-                    title: topBooksModel!.description,
+                    title: newBooksModel!.description,
                     smallSize: true,
                   ),
 
@@ -74,7 +74,7 @@ class SProductCardVertical extends StatelessWidget {
               ),
             ),
             const Spacer(),
-           // const SizedBox(height: TSizes.spaceBtwItems / 2),
+            // const SizedBox(height: TSizes.spaceBtwItems / 2),
 
           ],
         ),
