@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class NewBooksModel {
-  String imageUrl, author, bookName, description;
-  int id, categoryId;
+  String imageUrl, author, bookName, description, tag, categoryId, pdfUrl;
+  int id;
 
   NewBooksModel({
     required this.id,
@@ -12,6 +12,9 @@ class NewBooksModel {
     required this.author,
     required this.bookName,
     required this.description,
+    required this.tag,
+    required this.pdfUrl,
+
   });
 
 
@@ -24,6 +27,8 @@ class NewBooksModel {
       'Author': author,
       'Description': description,
       'BookName': bookName,
+      'Tag': tag,
+      'PdfUrl': pdfUrl,
 
     };
   }
@@ -38,6 +43,8 @@ class NewBooksModel {
       author: data['Author'] ?? '',
       description: data['Description'] ?? '',
       bookName: data['BookName'] ?? '',
+      tag: data['Tag'] ?? '',
+      pdfUrl: data['PdfUrl'] ?? '',
       id: data['Id'] ?? 0,
       categoryId: data['CategoryId'] ?? 0,
     );

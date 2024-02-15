@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../widget/library_details.dart';
-import 'all_books.dart';
-
-
 
 class Library extends StatelessWidget {
   const Library({super.key});
@@ -11,5 +7,6 @@ class Library extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const LibraryDetails();
+    //return const BookDetailsScreen();
   }
 }

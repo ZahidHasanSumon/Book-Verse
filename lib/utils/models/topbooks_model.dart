@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class TopBooksModel {
-  String imageUrl, author, bookName, description;
-  int id, categoryId;
+  String imageUrl, author, bookName, description, tag, categoryId, pdfUrl;
+  int id;
 
   TopBooksModel({
     required this.id,
@@ -12,6 +12,8 @@ class TopBooksModel {
     required this.author,
     required this.bookName,
     required this.description,
+    required this.tag,
+    required this.pdfUrl,
   });
 
 
@@ -24,6 +26,8 @@ class TopBooksModel {
       'Author': author,
       'Description': description,
       'BookName': bookName,
+      'Tag': tag,
+      'PdfUrl': pdfUrl,
 
     };
   }
@@ -38,6 +42,8 @@ class TopBooksModel {
       author: data['Author'] ?? '',
       description: data['Description'] ?? '',
       bookName: data['BookName'] ?? '',
+      tag: data['Tag'] ?? '',
+      pdfUrl: data['PdfUrl'] ?? '',
       id: data['Id'] ?? 0,
       categoryId: data['CategoryId'] ?? 0,
     );

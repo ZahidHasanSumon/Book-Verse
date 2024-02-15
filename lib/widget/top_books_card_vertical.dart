@@ -10,14 +10,14 @@ import '../utils/custom_themes/rounded_images.dart';
 import '../utils/custom_themes/sizes.dart';
 import '../utils/values/shadow.dart';
 
-class SProductCardVertical extends StatelessWidget {
-  const SProductCardVertical({super.key, this.topBooksModel});
+class TopBooksCardVertical extends StatelessWidget {
+  const TopBooksCardVertical({super.key, this.topBooksModel});
   final TopBooksModel? topBooksModel;
+
 
   @override
   Widget build(BuildContext context) {
     final dark = SHelperFunctions.isDarkMode(context);
-
     final images = topBooksModel!.imageUrl;
     final String bookName = topBooksModel!.bookName;
     final String author = topBooksModel!.author;
@@ -25,7 +25,7 @@ class SProductCardVertical extends StatelessWidget {
     final String pdfUrl = topBooksModel!.pdfUrl;
     return GestureDetector(
       onTap: () => Get.to(
-        () => BookDetailsScreen(
+            () => BookDetailsScreen(
             image: images,
             bookName: bookName,
             author: author,
@@ -42,7 +42,8 @@ class SProductCardVertical extends StatelessWidget {
             border: Border.all(
               color: SColors.darkGrey,
               width: 1,
-            )),
+            )
+        ),
         child: Column(
           children: [
             ///Thumbnail, Wishlist, Discount tag
@@ -56,6 +57,7 @@ class SProductCardVertical extends StatelessWidget {
                 applyImageRadius: true,
                 fit: BoxFit.cover,
                 isNetworkImage: true,
+
               ),
             ),
             const SizedBox(height: TSizes.spaceBtwItems / 2),
@@ -70,8 +72,8 @@ class SProductCardVertical extends StatelessWidget {
                     title: topBooksModel!.bookName,
                     smallSize: true,
                     maxLine: 1,
-                    bold: true,
                   ),
+
                   SProductTitleText(
                     title: topBooksModel!.author,
                     smallSize: true,
@@ -82,11 +84,13 @@ class SProductCardVertical extends StatelessWidget {
                     title: topBooksModel!.description,
                     smallSize: true,
                   ),
+
                 ],
               ),
             ),
             const Spacer(),
             // const SizedBox(height: TSizes.spaceBtwItems / 2),
+
           ],
         ),
       ),

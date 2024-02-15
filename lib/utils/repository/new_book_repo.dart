@@ -13,8 +13,8 @@ class NewBookRepo extends GetxController {
   Future<List<NewBooksModel>> fetchNewBooks() async{
     try{
 
-      final snapshot = await _db.collection('NewBooks').limit(15).get();
-     // final snapshot = await _db.collection('AllBooks').doc('TopBooks').collection('BookDetails').limit(10).get();
+     // final snapshot = await _db.collection('NewBooks').limit(15).get();
+     final snapshot = await _db.collection('AllBooks').where('Tag', isEqualTo: 'NewBooks').limit(30).get();
       final list = snapshot.docs.map((document) => NewBooksModel.fromSnapshot(document)).toList();
       return list;
 
@@ -28,24 +28,6 @@ class NewBookRepo extends GetxController {
     }
   }
 
-  //
-  // Future<List<NewBooksModel>> fetchTopBooks() async{
-  //   try{
-  //
-  //    // final snapshot = await _db.collection('NewBooks').limit(15).get();
-  //     final snapshot = await _db.collection('AllBooks').doc('TopBooks').collection('BookDetails').limit(10).get();
-  //     final list = snapshot.docs.map((document) => NewBooksModel.fromSnapshot(document)).toList();
-  //     return list;
-  //
-  //   } on FirebaseException catch(e){
-  //     throw CustomAlert(title: "Error", message: e.toString());
-  //   } on PlatformException catch(e){
-  //     throw CustomAlert(title: "Error", message: e.toString());
-  //   }catch (e){
-  //     throw const CustomAlert(title: "Error", message: "Something went wrong. Please try again.");
-  //
-  //   }
-  // }
 
 
 

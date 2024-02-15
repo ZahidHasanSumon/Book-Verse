@@ -41,11 +41,17 @@ dependencies:
   url_launcher: ^6.2.4
   flutter_svg: ^0.22.0
   carousel_slider: ^4.2.1
-  firebase_storage: ^11.6.4
+  firebase_storage: ^11.6.5
   firebase_core: ^2.25.3
   cloud_firestore: ^4.15.3
   shimmer: ^3.0.0
   flutter_svg_provider: ^0.1.10
+  file_picker: ^6.1.1
+  easy_pdf_viewer: ^1.0.7
+  path_provider: ^2.1.2
+  http: ^1.2.0
+  dio: ^5.4.0
+  pdfx: ^2.6.0
 
 
 dev_dependencies:

@@ -1,22 +1,22 @@
-import 'package:book_verse/controller/top_books_controller.dart';
-import 'package:book_verse/widget/top_books_card_vertical.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../controller/new_book_controller.dart';
 import '../utils/custom_themes/appbar.dart';
 import '../utils/custom_themes/sizes.dart';
 import '../widget/grid_layout.dart';
+import '../widget/newBooks_vertical.dart';
 
-class AllTopBooksProducts extends StatelessWidget {
-  const AllTopBooksProducts({super.key});
 
+class AllNewBooksProducts extends StatelessWidget {
+  const AllNewBooksProducts({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(TopBookController());
+    final controller = Get.put(NewBookController());
 
     return Scaffold(
       appBar: const SAppBar(
-        title: Text('Top Books'),
+        title: Text('New Books'),
         showBackArrow: true,
       ),
       body: Obx(() {
@@ -35,7 +35,7 @@ class AllTopBooksProducts extends StatelessWidget {
             padding: const EdgeInsets.all(TSizes.defaultSpace),
             child: SGridLayout(
               itemCount: controller.fetchBooks.length,
-              itemBuilder: (_, index) => TopBooksCardVertical(topBooksModel: controller.fetchBooks[index]),
+              itemBuilder: (_, index) => NewBooksCardVertical(newBooksModel: controller.fetchBooks[index]),
             ),
           );
         }

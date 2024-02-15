@@ -1,4 +1,3 @@
-import 'package:book_verse/utils/models/topbooks_model.dart';
 import 'package:book_verse/widget/book_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,24 +7,24 @@ import '../utils/custom_themes/product_title_text.dart';
 import '../utils/custom_themes/rounded_container.dart';
 import '../utils/custom_themes/rounded_images.dart';
 import '../utils/custom_themes/sizes.dart';
+import '../utils/models/newbooks_model.dart';
 import '../utils/values/shadow.dart';
 
-class SProductCardVertical extends StatelessWidget {
-  const SProductCardVertical({super.key, this.topBooksModel});
-  final TopBooksModel? topBooksModel;
+class LibraryAllBooks extends StatelessWidget {
+  const LibraryAllBooks({super.key, this.booksModel});
+  final NewBooksModel? booksModel;
 
   @override
   Widget build(BuildContext context) {
     final dark = SHelperFunctions.isDarkMode(context);
-
-    final images = topBooksModel!.imageUrl;
-    final String bookName = topBooksModel!.bookName;
-    final String author = topBooksModel!.author;
-    final String description = topBooksModel!.description;
-    final String pdfUrl = topBooksModel!.pdfUrl;
+    final images = booksModel!.imageUrl;
+    final String bookName = booksModel!.bookName;
+    final String author = booksModel!.author;
+    final String description = booksModel!.description;
+    final String pdfUrl = booksModel!.pdfUrl;
     return GestureDetector(
       onTap: () => Get.to(
-        () => BookDetailsScreen(
+            () => BookDetailsScreen(
             image: images,
             bookName: bookName,
             author: author,
@@ -52,7 +51,7 @@ class SProductCardVertical extends StatelessWidget {
               //  padding: const EdgeInsets.all(TSizes.sm),
               bgColor: dark ? SColors.dark : SColors.light,
               child: SRoundedImage(
-                imageUrl: topBooksModel!.imageUrl,
+                imageUrl: booksModel!.imageUrl,
                 applyImageRadius: true,
                 fit: BoxFit.cover,
                 isNetworkImage: true,
@@ -67,19 +66,18 @@ class SProductCardVertical extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SProductTitleText(
-                    title: topBooksModel!.bookName,
+                    title: booksModel!.bookName,
                     smallSize: true,
                     maxLine: 1,
-                    bold: true,
                   ),
                   SProductTitleText(
-                    title: topBooksModel!.author,
+                    title: booksModel!.author,
                     smallSize: true,
                     maxLine: 1,
                   ),
                   const SizedBox(height: TSizes.spaceBtwItems / 2),
                   SProductTitleText(
-                    title: topBooksModel!.description,
+                    title:  booksModel!.description,
                     smallSize: true,
                   ),
                 ],

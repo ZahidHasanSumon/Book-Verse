@@ -30,7 +30,7 @@ class SProductCardHorizontalShimmer extends StatelessWidget {
           ///thumbnail
           SRoundedContainer(
             height: 150,
-          //  padding: const EdgeInsets.all(TSizes.sm / 2),
+            padding: const EdgeInsets.all(0),
             bgColor: SColors.light,
             radius: 16,
             child: Shimmer.fromColors(

@@ -13,7 +13,7 @@ class TopBookRepo extends GetxController {
 
   Future<List<TopBooksModel>> fetchTopBooks() async{
     try{
-      final snapshot = await _db.collection('AllBooks').doc('TopBooks').collection('BookDetails').limit(10).get();
+      final snapshot = await _db.collection('AllBooks').where('Tag', isEqualTo: 'TopBooks').limit(30).get();
       final list = snapshot.docs.map((document) => TopBooksModel.fromSnapshot(document)).toList();
       return list;
 
