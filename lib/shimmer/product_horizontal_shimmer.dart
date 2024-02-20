@@ -1,4 +1,3 @@
-import 'package:book_verse/utils/custom_themes/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import '../helpers/helper_func.dart';
@@ -15,10 +14,9 @@ class SProductCardHorizontalShimmer extends StatelessWidget {
 
     return Container(
       width: 325,
-     // padding: const EdgeInsets.all(1),
       decoration: BoxDecoration(
         boxShadow: [SShadowStyle.verticalProductShadow],
-        borderRadius: BorderRadius.circular(TSizes.productImageRadius),
+        borderRadius: BorderRadius.circular(16),
         color: dark ? SColors.darkerGrey : SColors.lightContainer,
         border: Border.all(
           color: SColors.darkGrey, // Set the color of the border
@@ -51,7 +49,7 @@ class SProductCardHorizontalShimmer extends StatelessWidget {
           SizedBox(
             width: 172,
             child: Padding(
-              padding: const EdgeInsets.only(top: TSizes.sm),
+              padding: const EdgeInsets.only(top: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -62,10 +60,8 @@ class SProductCardHorizontalShimmer extends StatelessWidget {
                         height: 10,
                         width: 120,
                         child: Shimmer.fromColors(
-                          baseColor:
-                              dark ? Colors.grey[850]! : Colors.grey[850]!,
-                          highlightColor:
-                              dark ? Colors.grey[700]! : Colors.grey[100]!,
+                          baseColor: dark ? Colors.grey[850]! : Colors.grey[850]!,
+                          highlightColor: dark ? Colors.grey[700]! : Colors.grey[100]!,
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
@@ -78,10 +74,8 @@ class SProductCardHorizontalShimmer extends StatelessWidget {
                         height: 10,
                         width: 100,
                         child: Shimmer.fromColors(
-                          baseColor:
-                              dark ? Colors.grey[850]! : Colors.grey[850]!,
-                          highlightColor:
-                              dark ? Colors.grey[700]! : Colors.grey[100]!,
+                          baseColor: dark ? Colors.grey[850]! : Colors.grey[850]!,
+                          highlightColor: dark ? Colors.grey[700]! : Colors.grey[100]!,
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
@@ -90,14 +84,12 @@ class SProductCardHorizontalShimmer extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: TSizes.spaceBtwItems / 2),
+                      const SizedBox(height: 5),
                       SizedBox(
                         height: 20,
                         child: Shimmer.fromColors(
-                          baseColor:
-                              dark ? Colors.grey[850]! : Colors.grey[850]!,
-                          highlightColor:
-                              dark ? Colors.grey[700]! : Colors.grey[100]!,
+                          baseColor: dark ? Colors.grey[850]! : Colors.grey[850]!,
+                          highlightColor: dark ? Colors.grey[700]! : Colors.grey[100]!,
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),

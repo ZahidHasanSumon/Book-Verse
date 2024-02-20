@@ -13,7 +13,7 @@ class SAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.action,
     this.leadingIcon,
     this.leadingOnPressed,
-    this.showBackArrow = false,
+    this.showBackArrow = false, this.centerTitle,
   });
 
   final Widget? title;
@@ -21,6 +21,7 @@ class SAppBar extends StatelessWidget implements PreferredSizeWidget {
   final IconData? leadingIcon;
   final List<Widget>? action;
   final VoidCallback? leadingOnPressed;
+  final bool? centerTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,8 @@ class SAppBar extends StatelessWidget implements PreferredSizeWidget {
             : null,
         title: title,
         actions: action,
+        centerTitle: centerTitle,
+
       ),
     );
   }

@@ -1,5 +1,3 @@
-import 'package:book_verse/utils/models/topbooks_model.dart';
-import 'package:book_verse/widget/book_details.dart';
 import 'package:book_verse/widget/pdf_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

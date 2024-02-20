@@ -1,37 +1,38 @@
 import 'package:book_verse/screens/splash_screen.dart';
 import 'package:book_verse/utils/theme.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'controller/connectivity_controller.dart';
 import 'firebase_options.dart';
+import 'internet_check.dart';
 
 Future<void> main() async {
-  runApp(const MyApp());
-
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      title: 'Book Verse',
-      debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
-      theme: SAppTheme.lightTheme,
-      darkTheme:  SAppTheme.darkTheme,
+    final ConnectivityController connectivityController = Get.put(ConnectivityController());
 
-      home: const SplashScreen(),
+    return Obx(
+          () => GetMaterialApp(
+        title: 'Book Verse',
+        debugShowCheckedModeBanner: false,
+        themeMode: ThemeMode.system,
+        theme: SAppTheme.lightTheme,
+        darkTheme: SAppTheme.darkTheme,
+        home: connectivityController.isConnected.value ? const SplashScreen() : const InternetCheck(child: Placeholder()),
+      ),
     );
   }
 }
-
-

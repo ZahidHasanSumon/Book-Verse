@@ -1,5 +1,6 @@
 import 'package:book_verse/controller/all_books_controller.dart';
 import 'package:book_verse/widget/library_allBooks.dart';
+import 'package:book_verse/widget/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../utils/custom_themes/appbar.dart';
@@ -27,9 +28,12 @@ class LibraryDetails extends StatelessWidget {
             // const SizedBox(height: 15),
 
             ///Searchbar
-            const SSearchContainer(
+            SSearchContainer(
               text: STexts.search,
-              padding: EdgeInsets.all(0.0),
+              padding: const EdgeInsets.all(0.0),
+              onTab:  () {
+                Get.to(const SearchPage());
+              },
             ),
             const SizedBox(height: TSizes.spaceBtwSections),
             Obx((){
