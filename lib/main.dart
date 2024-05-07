@@ -1,6 +1,5 @@
 import 'package:book_verse/screens/splash_screen.dart';
 import 'package:book_verse/utils/theme.dart';
-import 'package:connectivity/connectivity.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -115,7 +115,7 @@ Future downloadFile(context, String pdfUrl, String bookName) async {
       // Check if the file already exists
       if (await file.exists()) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('File already exists')),
+          const SnackBar(content: Text('File already exists'), duration: Duration(seconds: 2)),
         );
         return; // Exit the function if file exists
       }
@@ -160,21 +160,22 @@ Future downloadFile(context, String pdfUrl, String bookName) async {
       Navigator.pop(context); // Dismiss the progress dialog
 
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Downloaded file'),),
+        const SnackBar(content: Text('Downloaded file'),duration: Duration(seconds: 2),),
       );
     } catch (e) {
       if (kDebugMode) {
-        print("Error downloading file: $e");
+        //print("Error downloading file: $e");
+        SnackBar(content: Text("Error downloading file: $e", style: const TextStyle(color: Colors.white),), duration: const Duration(seconds: 2),backgroundColor: SColors.error,);
       }
       Navigator.pop(context); // Dismiss the progress dialog if an error occurs
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Failed to download file')),
+        const SnackBar(content: Text('Failed to download file', style: TextStyle(color: Colors.white),), duration: Duration(seconds: 2),backgroundColor: SColors.error,),
       );
     }
   } else {
     // Handle case when pdfUrl is empty
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Could not find the file')),
+      const SnackBar(content: Text('Could not find the file!',style: TextStyle(color: Colors.white),), duration: Duration(seconds: 2),backgroundColor: SColors.error,),
     );
   }
 }

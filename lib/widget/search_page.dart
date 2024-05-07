@@ -16,6 +16,8 @@ class SearchPage extends StatefulWidget {
   State<SearchPage> createState() => _SearchViewState();
 }
 
+
+
 class _SearchViewState extends State<SearchPage> {
   var searchName = "";
 
@@ -82,27 +84,31 @@ class _SearchViewState extends State<SearchPage> {
 
                   }
                   const SizedBox(height: 10);
-                  return ListView.builder(
-                    itemCount: snapshot.data!.docs.length,
-                    itemBuilder: (context, index) {
-                      var data = snapshot.data!.docs[index];
-                      return ListTile(
-                        onTap: () => Get.to(
-                              () => BookDetailsScreen(
-                            image: data['ImageUrl'],
-                            bookName: data['BookName'],
-                            author: data['Author'],
-                            description: data['Description'],
-                            pdfUrl: data['PdfUrl'],),
-                        ),
-                        leading: CircleAvatar(
-                          radius: 24,
-                          backgroundImage: NetworkImage(data['ImageUrl']),
-                        ),
-                        title: Text(data['BookName']),
-                        subtitle: Text(data['Author']),
-                      );
-                    },
+                  return Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: ListView.builder(
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: (context, index) {
+                        var data = snapshot.data!.docs[index];
+
+                        return ListTile(
+                          onTap: () => Get.to(
+                                () => BookDetailsScreen(
+                              image: data['ImageUrl'] ?? '',
+                              bookName: data['BookName'] ?? '',
+                              author: data['Author'] ?? '',
+                              description: data['Description'] ?? '',
+                              pdfUrl: data['PdfUrl'] ?? '',),
+                          ),
+                          leading: CircleAvatar(
+                            radius: 24,
+                            backgroundImage: NetworkImage(data['ImageUrl'] ?? ''),
+                          ),
+                          title: Text(data['BookName'] ?? ''),
+                          subtitle: Text(data['Author'] ?? ''),
+                        );
+                      },
+                    ),
                   );
                 },
               ),
